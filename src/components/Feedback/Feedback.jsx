@@ -26,7 +26,7 @@ class Feedback extends Component {
   countPositiveFeedbackPercentage = () => {
     const { good } = this.state;
     const totalFeedback = this.countTotalFeedback();
-    return totalFeedback > 0 ? Math.ceil((good / totalFeedback) * 100) : 0;
+    return  Math.ceil((good / totalFeedback) * 100);
   };
 
   render() {
