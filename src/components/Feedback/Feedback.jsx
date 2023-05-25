@@ -33,23 +33,26 @@ class Feedback extends Component {
     const { good, neutral, bad } = this.state;
     return (
       <div className={css.all}>
-        <Section title="Please leave feedback" />
-        <FeedbackOptions
-          options={['good', 'bad', 'neutral']}
-          onLeaveFeedback={this.onLeaveFeedback}
-        />
-
-        {this.countTotalFeedback() > 0 ? (
-          <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={this.countTotalFeedback()}
-            positivePercentage={this.countPositiveFeedbackPercentage()}
+        <Section title="Please leave feedback">
+          <FeedbackOptions
+            options={['good', 'bad', 'neutral']}
+            onLeaveFeedback={this.onLeaveFeedback}
           />
-        ) : (
-          <Notification message="There is no feedback" />
-        )}
+        </Section>
+
+        <Section title="Statistics">
+          {this.countTotalFeedback() > 0 ? (
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
+            />
+          ) : (
+            <Notification message="There is no feedback" />
+          )}
+        </Section>
       </div>
     );
   }
